@@ -1,6 +1,6 @@
 # Minimil Material Calculator
 
-This is a Minimal RESTful Calculator implemented whit Core backend using JAVA Spring (Spring boot 2) REST APIs & Frontend using Angular 7 (https://angular.io/)/Angular Material design (https://material.angular.io).
+This is a Minimal RESTful Calculator implemented whit Core backend using JAVA Spring (Spring boot 2) REST APIs & Frontend using Angular 7 (https://angular.io/) / Angular Material design (https://material.angular.io).
 
 ##Technologies  
 
