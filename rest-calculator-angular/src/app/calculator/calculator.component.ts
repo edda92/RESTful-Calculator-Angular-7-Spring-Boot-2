@@ -28,7 +28,7 @@ export class CalculatorComponent implements OnInit {
 
   //The duration of the SnackBar (Ref: https://material.angular.io/components/snack-bar/examples)
   // 5 seconds
-  durationInSeconds = 20*1000;
+  durationInSeconds = 5*1000;
 
   errorMessage: string;
 
