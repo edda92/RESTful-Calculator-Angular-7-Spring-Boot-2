@@ -14,7 +14,12 @@ export class CalculatorComponent implements OnInit {
   firstValue : boolean;
 
   //only one point is permitted
-  pointInserted : boolean = false;
+  pointInsertedOperator1 : boolean = false;
+  pointInsertedOperator2 : boolean = false;
+
+  //If the operation is selected or not!
+  //if so disable other operation buttons
+  operationSelected : boolean = false;
 
   displayedValue : string = '0';
 
@@ -24,7 +29,6 @@ export class CalculatorComponent implements OnInit {
 
   constructor(private restCalculator : CalculatorService) { 
     this.firstValue = true;
-    this.displayedValue = this.operator1.toString();
   }
 
   ngOnInit() {
@@ -43,13 +47,17 @@ export class CalculatorComponent implements OnInit {
     }else{
       this.operator2 = this.operator2.concat(numberInput);
     }
-    this.displayedValue = this.displayedValue.concat(numberInput);
+
+    if(this.firstValue)
+      this.displayedValue = numberInput.toString();
+    else
+      this.displayedValue = this.displayedValue.concat(numberInput);
   }
 
- setOperation(operation: string){
+ setOperation(operation: string, symbol: string){
     this.operation = operation;
-    this.displayedValue = this.displayedValue.concat(operation);
-    console.log(operation);
+    this.displayedValue = this.displayedValue.concat(symbol);
+    this.operationSelected = true;
   }
 
   delete(){
@@ -62,11 +70,24 @@ export class CalculatorComponent implements OnInit {
     }
   }
 
+  insertPoint(){
+    if(this.operation == undefined){
+      this.pointInsertedOperator1 = true;
+    }else{
+      this.pointInsertedOperator2 = true;
+    }
+  }
+
   result(){
     console.log(Number.parseFloat(this.operator1) + " " + Number.parseFloat(this.operator2));
-    this.restCalculator.add(Number.parseFloat(this.operator1), Number.parseFloat(this.operator2)).subscribe(res =>{
+    this.restCalculator.doOperation(Number.parseFloat(this.operator1), Number.parseFloat(this.operator2), this.operation).subscribe(res =>{
         this.displayedValue = res.result.toString();
         this.operator1 = res.result.toString();
     });
   }
+
+  pointDisable(){
+
+  }
+
 }

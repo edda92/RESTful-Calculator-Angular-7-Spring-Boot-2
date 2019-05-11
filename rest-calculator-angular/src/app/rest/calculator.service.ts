@@ -8,8 +8,11 @@ export class CalculatorService{
     
     constructor(private apiService: ApiService){}
 
-    add(operand1: number, operand2: number): Observable<Result>{
-       return this.apiService.post("add", {"operand1": operand1, "operand2": operand2});
+    doOperation(operand1: number, operand2: number, operation: string): Observable<Result>{
+       return this.apiService.post(operation, {"operand1": operand1, "operand2": operand2});
     }
 
+     fibonacci(operand1: number, operand2: number): Observable<Result>{
+        return this.apiService.post("fibonacci", {"operand1": operand1});
+     }
 }
