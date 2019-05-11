@@ -15,6 +15,8 @@ import { CalculatorService } from './rest/calculator.service';
 import { ApiService } from './rest/api.service';
 import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 
 
@@ -34,7 +36,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatButtonModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSnackBarModule
   ],
   providers: [CalculatorService, ApiService, HttpClient],
   bootstrap: [AppComponent]

@@ -7,11 +7,21 @@ import javax.validation.Valid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * This class implements the OperationInterface and add the operands that are used in other 
+ * classes.
+ * 
+ * @author mohamed.eddaakouri
+ *
+ */
 public abstract class OperationAbstract implements OperationInterface {
 	
 	private static final Logger logger = LogManager.getLogger(OperationAbstract.class);
 	
+	//the first operand that is obtained from the client
 	protected BigDecimal operand1;
+	
+	//the second operand that is obtained from the client
 	protected BigDecimal operand2;
 
 	/**

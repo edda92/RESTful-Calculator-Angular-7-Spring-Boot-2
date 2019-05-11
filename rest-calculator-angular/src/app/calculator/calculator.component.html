@@ -32,7 +32,7 @@
                 <mat-grid-tile><button [disabled]="operationSelected" mat-button (click)="setOperation('subtract', '-')">-</button></mat-grid-tile>
                 <mat-grid-tile><button [disabled]="operationSelected" mat-button (click)="setOperation('divide', '/')">/</button></mat-grid-tile>
                 <mat-grid-tile><button [disabled]="operationSelected" mat-button (click)="setOperation('multiply', '*')">*</button></mat-grid-tile>
-                <mat-grid-tile><button mat-button (click)="result()"><strong>=</strong></button></mat-grid-tile>
+                <mat-grid-tile><button mat-button [disabled]="!resultButtonVisible()" (click)="result()"><strong>=</strong></button></mat-grid-tile>
                 <mat-grid-tile><button mat-button (click)="fibonacciSequence()">FIBONACCI</button></mat-grid-tile>
               </mat-grid-list>
             </mat-card>

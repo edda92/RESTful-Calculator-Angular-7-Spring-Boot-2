@@ -11,9 +11,13 @@ import org.springframework.http.HttpStatus;
 
 public class Result {
 
-	private HttpStatus status = HttpStatus.OK;
+	//Message of the result (error message, or simply the result of fibonacci calculation)
 	private String message = "";
+	
+	//If there is any error during the execution of the operation
 	private Boolean error = Boolean.FALSE;
+	
+	//The final result of the aritmetic operation
 	private BigDecimal result = null;
 	
 	//empty constructor
@@ -24,11 +28,6 @@ public class Result {
 		this.message = message;
 		this.error = error;
 		this.result = result;
-	}
-	
-	public Result(HttpStatus status, String message, Boolean error, BigDecimal result) {
-		this(message, error, result);
-		this.setStatus(status);
 	}
 	
 	/**
@@ -66,20 +65,6 @@ public class Result {
 	 */
 	public void setResult(BigDecimal result) {
 		this.result = result;
-	}
-	
-	/**
-	 * @return the status
-	 */
-	public HttpStatus getStatus() {
-		return status;
-	}
-
-	/**
-	 * @param status the status to set
-	 */
-	public void setStatus(HttpStatus status) {
-		this.status = status;
 	}
 
 	/* (non-Javadoc)
