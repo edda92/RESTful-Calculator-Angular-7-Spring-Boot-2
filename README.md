@@ -17,4 +17,5 @@ Swagger UI is used to document and test the REST API from browser. The console c
 REST (REpresentational State Transfer) is an architectural style, and an approach to communications that is often used in the development of Web services. Modern-Ecommerce core backend support fully REST API to allow integarte with any Frontend platform
 
 
+### Angular 7
 
