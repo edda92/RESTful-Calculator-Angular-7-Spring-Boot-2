@@ -1,6 +1,6 @@
 # Minimil Material Calculator
 
-![image](https://angular.io/assets/images/logos/angular/logo-nav@2x.png)
+![image](https://angular.io/assets/images/logos/angular/logo-nav@2x.png) + ![image2](https://ertan-toker.de/wp-content/uploads/2018/04/spring-boot-project-logo-1-thegem-blog-default-large.png)
 
 This is a Minimal RESTful Calculator implemented whit Core backend using JAVA Spring (Spring boot 2) REST APIs & Frontend using Angular 7 (https://angular.io/)/Angular Material design (https://material.angular.io).
 
