@@ -10,6 +10,7 @@ This is a Minimal RESTful Calculator implemented whit Core backend using JAVA Sp
 Spring framework is an open source Java platform that provides comprehensive infrastructure support for developing robust Java applications very easily and very rapidly.
 
 ### Swagger UI
+Swagger UI is used to document and test the REST API from browser. The console can be accessed from this address (http://localhost:8080/swagger-ui.html) 
 
 
 ### REST API
