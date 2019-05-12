@@ -118,7 +118,7 @@ public class CalculatorControllerTests {
 
 		MockHttpServletResponse response = result.getResponse();
 
-		String expectedResult = "{\"message\":\"\",\"error\":false,\"result\":-2.5}";
+		String expectedResult = "{\"message\":\"\",\"error\":false,\"result\":-2.5000000000}";
 
 		assertEquals(HttpStatus.OK.value(), response.getStatus());
 		
@@ -140,7 +140,7 @@ public class CalculatorControllerTests {
 
 		assertEquals(HttpStatus.OK.value(), response.getStatus());
 						
-		String expectedResult = "{\"message\":\" 1  2  3  5  8  13  21 \",\"error\":false,\"result\":null}";
+		String expectedResult = "{\"message\":\"1  1  2  3  5  8  13  21  \",\"error\":false,\"result\":null}";
 
 		assertEquals(expectedResult, response.getContentAsString());
 	}
