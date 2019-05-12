@@ -35,7 +35,7 @@ cd RESTful-Calculator-Angular-7-Spring-Boot-2
 
 This will get a copy of the project installed locally. To install all of its dependencies and start each app, follow the instructions below.
 
-To run the backend, cd into the `rest-calculator` folder and run:
+To run the backend, cd into thec folder and run:
  
 ```bash
 ./mvnw spring-boot:run
@@ -46,6 +46,9 @@ To run the client, cd into the `rest-calculator-angular` folder and run:
 ```bash
 npm install && npm start
 ```
+###Note
+
+In the `deploy/backend` folder there is a ready war file that can be deployable in any Java application server; the client application can be found in the folder `deploy/frontend` and can be deployable in any HTTP server.
 
 ### Accessing Application
 Component         | URL                                      
