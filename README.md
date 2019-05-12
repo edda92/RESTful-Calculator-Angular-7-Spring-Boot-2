@@ -46,7 +46,7 @@ To run the client, cd into the `rest-calculator-angular` folder and run:
 ```bash
 npm install && npm start
 ```
-###Note
+### Note
 
 In the `deploy/backend` folder there is a ready war file that can be deployable in any Java application server; the client application can be found in the folder `deploy/frontend` and can be deployable in any HTTP server.
 
