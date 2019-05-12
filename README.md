@@ -1,4 +1,4 @@
-# Minimil Material Calculator
+# Minimal Material Calculator (RESTful)
 
 ![image](https://raw.githubusercontent.com/edda92/RESTful-Calculator-Angular-7-Spring-Boot-2/master/media/calculator.PNG)
 
