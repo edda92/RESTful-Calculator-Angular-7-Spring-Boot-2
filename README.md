@@ -1,5 +1,7 @@
 # Minimil Material Calculator
 
+![image](https://raw.githubusercontent.com/edda92/RESTful-Calculator-Angular-7-Spring-Boot-2/master/media/calculator.PNG)
+
 This is a Minimal RESTful Calculator implemented whit Core backend using JAVA Spring (Spring boot 2) REST APIs & Frontend using Angular 7 (https://angular.io/) / Angular Material design (https://material.angular.io).
 
 ##Technologies  
@@ -15,4 +17,5 @@ Swagger UI is used to document and test the REST API from browser. The console c
 REST (REpresentational State Transfer) is an architectural style, and an approach to communications that is often used in the development of Web services. Modern-Ecommerce core backend support fully REST API to allow integarte with any Frontend platform
 
 
+### Angular 7
 
