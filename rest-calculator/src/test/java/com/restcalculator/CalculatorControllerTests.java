@@ -78,7 +78,7 @@ public class CalculatorControllerTests {
 
 		MockHttpServletResponse response = result.getResponse();
 
-		String expectedResult = "{\"message\":\"Error! One of the operands is not valid.\",\"error\":true,\"result\":null}";
+		String expectedResult = "{\"message\":\"Error: One of the operands is not valid\",\"error\":true,\"result\":null}";
 
 		assertEquals(HttpStatus.OK.value(), response.getStatus());
 		
@@ -98,7 +98,7 @@ public class CalculatorControllerTests {
 
 		MockHttpServletResponse response = result.getResponse();
 
-		String expectedResult = "{\"message\":\"Error! Can't divide by zero!\",\"error\":true,\"result\":null}";
+		String expectedResult = "{\"message\":\"Error: Can't divide by zero\",\"error\":true,\"result\":null}";
 
 		assertEquals(HttpStatus.OK.value(), response.getStatus());
 		
@@ -140,7 +140,7 @@ public class CalculatorControllerTests {
 
 		assertEquals(HttpStatus.OK.value(), response.getStatus());
 						
-		String expectedResult = "{\"message\":\"1 - 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 -\",\"error\":false,\"result\":null}";
+		String expectedResult = "{\"message\":\" 1  2  3  5  8  13  21 \",\"error\":false,\"result\":null}";
 
 		assertEquals(expectedResult, response.getContentAsString());
 	}

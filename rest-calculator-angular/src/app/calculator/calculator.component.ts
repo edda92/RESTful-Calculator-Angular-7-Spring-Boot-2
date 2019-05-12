@@ -30,7 +30,11 @@ export class CalculatorComponent implements OnInit {
   // 5 seconds
   durationInSeconds = 5*1000;
 
+  //error message 
   errorMessage: string;
+
+  //fibonacciButtonVisible
+  fibonacciButtonVisible : boolean = true;
 
   operator1 : string = '0';
   operator2 : string = '';
@@ -66,6 +70,7 @@ export class CalculatorComponent implements OnInit {
     this.operation = operation;
     this.displayedValue = this.displayedValue.concat(symbol);
     this.operationSelected = true;
+    this.fibonacciButtonVisible = false;
   }
 
   //reset all operation
@@ -79,6 +84,7 @@ export class CalculatorComponent implements OnInit {
     this.pointInsertedOperator1 = false;
     this.pointInsertedOperator2 = false;
     this.operationSelected = false;
+    this.fibonacciButtonVisible = true;
   }
 
   //insert point
@@ -92,6 +98,7 @@ export class CalculatorComponent implements OnInit {
       this.displayedValue = this.displayedValue.concat('.');
       this.operator2 = this.operator2.concat('.');
     }
+    this.fibonacciButtonVisible = false;
   }
 
   result(){
@@ -154,11 +161,12 @@ export class CalculatorComponent implements OnInit {
             this.errorMessage = res.message;
             this.openSnackBar(this.errorMessage, null, this.durationInSeconds);
           }
+          this.fibonacciButtonVisible = false;
         },
         error => {
           console.log(error);
          this.handleErrors(error);
-        });;
+        });
     }
   }
 

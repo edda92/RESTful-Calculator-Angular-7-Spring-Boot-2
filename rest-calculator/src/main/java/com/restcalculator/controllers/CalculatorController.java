@@ -168,13 +168,12 @@ public class CalculatorController {
 					StringBuilder sbResult = new StringBuilder();
 					Integer previous = 1;
 					Integer next = 1;
-					sbResult.append(previous + "  ");
-
+					
 					//iterative solution to Fibonacci Series
 					//iterating until the previous value isn't greater than user input value
 					for(int i = 1; previous <= intValue; i++) {
 						logger.info(previous);
-						sbResult.append(i + "  ");
+						sbResult.append(previous + "  ");
 
 						// On each iteration, we are assigning second number
 						// to the first number and assigning the sum of last two
