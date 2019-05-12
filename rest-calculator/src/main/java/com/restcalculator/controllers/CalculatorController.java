@@ -1,9 +1,12 @@
 package com.restcalculator.controllers;
 
+import java.math.BigDecimal;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -130,9 +133,75 @@ public class CalculatorController {
 		return result;
 	}
 	
+	/**
+	 * service that is responsible for creating the fibonacci series
+	 * it's an iterative algorithm 
+	 * @param value is positive number 
+	 * @return
+	 */
 	@GetMapping("/fibonacci/{val}")
-	public Result fibonacci() {
-		return null;
+	public Result fibonacci(@PathVariable(name = "val") String value) {
+		logger.info("starting the fibonacci sequence!");
+		logger.info("inserted value: " + value);
+		Result result = new Result();
+		//check if the value is not null
+		if(value == null || org.springframework.util.StringUtils.isEmpty(value)) {
+			logger.error("No value inserted");
+			result.setError(Boolean.TRUE);
+			result.setMessage(Constants.ERROR_MESSAGE_NO_VALUE_INSERTED);
+		}else {
+			try {
+				//parse the string value to bigdecimal object
+				Integer intValue = Integer.parseInt(value);
+				if(intValue < 0) {
+					//No negative number permitted
+					result.setError(Boolean.TRUE);
+					result.setMessage(Constants.ERROR_MESSAGE_NEGATIVE_NUMBER);
+				}else if(intValue == 0) {
+					//if the value is 0
+					result.setMessage("0"); 
+				} else if(intValue == 1){
+					//if the value is 1 return the same
+					result.setMessage("1"); 
+				} else {
+
+					StringBuilder sbResult = new StringBuilder();
+					Integer previous = 1;
+					Integer next = 1;
+					sbResult.append(previous + "  ");
+
+					//iterative solution to Fibonacci Series
+					//iterating until the previous value isn't greater than user input value
+					for(int i = 1; previous <= intValue; i++) {
+						logger.info(previous);
+						sbResult.append(i + "  ");
+
+						// On each iteration, we are assigning second number
+						// to the first number and assigning the sum of last two
+						// numbers to the second number
+						Integer sum = previous + next;
+						previous = next;
+						next = sum;
+					}
+
+					//assign the result to be returned to client
+					result.setMessage(sbResult.toString());
+				}
+					
+			}catch(NumberFormatException nfe) {
+				//the value isn't correctly parsed / the value inserted is invalid
+				result.setError(Boolean.TRUE);
+				//return the correct error message to be correctly catched by the frontend client
+				result.setMessage(Constants.ERROR_MESSAGE_VALUE_NOT_VALID_NUMBER);
+			}catch(Exception ex) {
+				//catch the generic exception in case
+				result.setError(Boolean.TRUE);
+				//return the correct error message to be correctly catched by the frontend client
+				result.setMessage(Constants.ERROR_MESSAGE_GENERIC_ERROR);
+			}
+		}
+		logger.info("Result : " + result);
+		return result;
 	}
 	
 	/**

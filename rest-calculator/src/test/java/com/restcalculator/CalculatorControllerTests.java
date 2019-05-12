@@ -6,9 +6,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.codec.json.Jackson2JsonDecoder;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -40,7 +40,7 @@ public class CalculatorControllerTests {
 
 		MockHttpServletResponse response = result.getResponse();
 
-		String expectedResult = "{\"status\":\"OK\",\"message\":\"\",\"error\":false,\"result\":2}";
+		String expectedResult = "{\"message\":\"\",\"error\":false,\"result\":2}";
 
 		assertEquals(HttpStatus.OK.value(), response.getStatus());
 
@@ -59,7 +59,7 @@ public class CalculatorControllerTests {
 
 		MockHttpServletResponse response = result.getResponse();
 
-		String expectedResult = "{\"status\":\"OK\",\"message\":\"\",\"error\":false,\"result\":-2}";
+		String expectedResult = "{\"message\":\"\",\"error\":false,\"result\":-2}";
 
 		assertEquals(HttpStatus.OK.value(), response.getStatus());
 
@@ -78,7 +78,7 @@ public class CalculatorControllerTests {
 
 		MockHttpServletResponse response = result.getResponse();
 
-		String expectedResult = "{\"status\":\"OK\",\"message\":\"Error! One of the operands is not valid.\",\"error\":true,\"result\":null}";
+		String expectedResult = "{\"message\":\"Error! One of the operands is not valid.\",\"error\":true,\"result\":null}";
 
 		assertEquals(HttpStatus.OK.value(), response.getStatus());
 		
@@ -98,7 +98,7 @@ public class CalculatorControllerTests {
 
 		MockHttpServletResponse response = result.getResponse();
 
-		String expectedResult = "{\"status\":\"OK\",\"message\":\"Error! Can't divide by zero!\",\"error\":true,\"result\":null}";
+		String expectedResult = "{\"message\":\"Error! Can't divide by zero!\",\"error\":true,\"result\":null}";
 
 		assertEquals(HttpStatus.OK.value(), response.getStatus());
 		
@@ -118,13 +118,94 @@ public class CalculatorControllerTests {
 
 		MockHttpServletResponse response = result.getResponse();
 
-		String expectedResult = "{\"status\":\"OK\",\"message\":\"\",\"error\":false,\"result\":-2.5}";
+		String expectedResult = "{\"message\":\"\",\"error\":false,\"result\":-2.5}";
 
 		assertEquals(HttpStatus.OK.value(), response.getStatus());
 		
 		assertEquals(expectedResult, response.getContentAsString());
 
 	}
+	
+	@Test
+	public void fibonacciOperationTests_testOk() throws Exception{
+
+		String valueParam = "30";
+		
+		RequestBuilder requestBuilder = MockMvcRequestBuilders.get(Constants.CALCULATOR_PATH + "/fibonacci/" + valueParam).accept(
+				MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		MockHttpServletResponse response = result.getResponse();
+
+		assertEquals(HttpStatus.OK.value(), response.getStatus());
+						
+		String expectedResult = "{\"message\":\"1 - 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 -\",\"error\":false,\"result\":null}";
+
+		assertEquals(expectedResult, response.getContentAsString());
+	}
+	
+	@Test
+	public void fibonacciOperationTests_zeroInput() throws Exception{
+
+		String valueParam = "0";
+		
+		RequestBuilder requestBuilder = MockMvcRequestBuilders.get(Constants.CALCULATOR_PATH + "/fibonacci/" + valueParam).accept(
+				MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		MockHttpServletResponse response = result.getResponse();
+
+		assertEquals(HttpStatus.OK.value(), response.getStatus());
+		
+		String expectedResult = "{\"message\":\"0\",\"error\":false,\"result\":null}";
+
+		assertEquals(expectedResult, response.getContentAsString());
+
+	}
+	
+	@Test
+	public void fibonacciOperationTests_oneInput() throws Exception{
+
+		String valueParam = "1";
+		
+		RequestBuilder requestBuilder = MockMvcRequestBuilders.get(Constants.CALCULATOR_PATH + "/fibonacci/" + valueParam).accept(
+				MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		MockHttpServletResponse response = result.getResponse();
+
+		assertEquals(HttpStatus.OK.value(), response.getStatus());
+		
+		String expectedResult = "{\"message\":\"1\",\"error\":false,\"result\":null}";
+
+		assertEquals(expectedResult, response.getContentAsString());
+
+	}
+	
+	
+	@Test
+	public void fibonacciOperationTests_negativeInput() throws Exception{
+
+		String valueParam = "-10";
+		
+		RequestBuilder requestBuilder = MockMvcRequestBuilders.get(Constants.CALCULATOR_PATH + "/fibonacci/" + valueParam).accept(
+				MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		MockHttpServletResponse response = result.getResponse();
+
+		assertEquals(HttpStatus.OK.value(), response.getStatus());
+		
+		String expectedResult = "{\"message\":\"Error: negative number not permitted\",\"error\":true,\"result\":null}";
+
+		assertEquals(expectedResult, response.getContentAsString());
+
+	}
+
 
 
 }

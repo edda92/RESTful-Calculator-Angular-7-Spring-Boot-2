@@ -140,4 +140,26 @@ export class CalculatorComponent implements OnInit {
     this.openSnackBar(this.errorMessage, null, this.durationInSeconds);
   }
 
+  fibonacciSeries(){
+    if(this.operator1.length > 0){
+      this.restCalculator.fibonacci(this.operator1).subscribe(
+        res =>{
+          if(!res.error){
+            this.displayedValue = res.message;
+            this.operationSelected = false;
+            this.operator2 = '';
+            this.operator1 = '0'
+            this.operation = undefined;
+          }else{
+            this.errorMessage = res.message;
+            this.openSnackBar(this.errorMessage, null, this.durationInSeconds);
+          }
+        },
+        error => {
+          console.log(error);
+         this.handleErrors(error);
+        });;
+    }
+  }
+
 }

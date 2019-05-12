@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { Observable } from 'rxjs';
 import { Result } from '../models/result.model';
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpParams } from '@angular/common/http';
 
 @Injectable()
 export class CalculatorService {
@@ -13,7 +13,7 @@ export class CalculatorService {
       return this.apiService.post(operation, { "operand1": operand1, "operand2": operand2 });
    }
 
-   fibonacci(operand1: number, operand2: number): Observable<Result> {
-      return this.apiService.post("fibonacci", { "operand1": operand1 });
+   fibonacci(val: string): Observable<Result> {
+      return this.apiService.get("fibonacci", val);
    }
 }
